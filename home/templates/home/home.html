@@ -11,5 +11,7 @@
 
 {% block content %}
     <h1>Home</h1>
-    <p> Ім'я користувача: {{ user_name }}</p>
+    {% if user_name %}
+        <p> Ім'я користувача: {{ user_name }}</p>
+    {% endif %}
 {% endblock %}
