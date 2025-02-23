@@ -19,12 +19,14 @@ def render_post(request: HttpRequest):
     
         form_post = PostForm(request.POST, request.FILES)
         if form_post.is_valid():
-            title = form_post.cleaned_data.get('title')
-            content = form_post.cleaned_data.get('content')
-            image = form_post.cleaned_data.get('image')
+            author_profile = Author.objects.get(user= request.user)
+            form_post.save(author_profile= author_profile)
+            # title = form_post.cleaned_data.get('title')
+            # content = form_post.cleaned_data.get('content')
+            # image = form_post.cleaned_data.get('image')
             
         
-            print(f"{GREEN}title: {YELLOW}{title}\n{GREEN}content: {YELLOW}{content}")
+            # print(f"{GREEN}title: {YELLOW}{title}\n{GREEN}content: {YELLOW}{content}")
 
     return render(
         request= request, 
